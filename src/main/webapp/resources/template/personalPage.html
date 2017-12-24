@@ -1,0 +1,55 @@
+<div ng-controller="PersonalCtrl">
+<div ng-hide="user">
+    <h3>You are not authorized!</h3>
+    <a href="#/" class="btn btn-default" style="align-self: center">Home page</a>
+</div>
+<div class="row" ng-show="user">
+    <div class="col-md-3">
+        <br/>
+        <br/>
+        <img src="{{user.avatar}}" width="230" height="230">
+    </div>
+    <div class="col-md-2">
+        <br/>
+        <div class="row">
+            <h2>{{user.name}}</h2>
+        </div>
+        <div class="row" ng-show="isAdmin && isAuthor">
+            <br/>
+            <label for="banButton">You are admin of this site!</label>
+            <br/>
+            <a href="deleteUsersPage.html" class="btn btn-primary" id="banButton">Delete!</a>
+        </div>
+    </div>
+    <div class="col-md-1">
+        <br/>
+    </div>
+    <div class="col-md-4">
+        <br/>
+        <div class="row" ng-show="inf">
+            <br/>
+            <h3>Info</h3>
+            <div>
+                <h4>Location: {{user.location}}</h4>
+            </div>
+            <div>
+                <h4>Email: {{user.email}}</h4>
+            </div>
+            <div>
+                <h4>Telephone: {{user.number}}</h4>
+            </div>
+            <div>
+                <h4>Data: {{user.birthday}}</h4>
+            </div>
+        </div>
+        <div ng-hide="inf">
+            <h4>Don't have contact information</h4>
+        </div>
+        <br/>
+    </div>
+    <div ng-show="isAuthor">
+        <a class="btn btn-success" href="#/update" role="button">Update Info</a>
+        <button class="btn btn-success" ng-click="logout()"><a href="#/">Logout</a></button>
+    </div>
+</div>
+</div>

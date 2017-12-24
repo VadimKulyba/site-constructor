@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-md-3">
+        <h1>Home</h1>
+        <h3>Entrance</h3>
+        <form ng-hide="noVisibility">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Login"
+                       maxlength="255" ng-model="user.login">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password"
+                       maxlength="255" ng-model="user.password">
+            </div>
+            <button class="btn btn-success" ng-click="authorize()">Log in</button>
+            <a href="#/reg" class="btn btn-default">Registration</a>
+        </form>
+        <div ng-hide="noVisibility">
+            <br/>
+            <h4>Or enter with:</h4>
+            <br/>
+            <a class="btn btn-default" ng-click="authorizeFB()"><img
+                    src="image/facebook.png"/></a>
+            <a class="btn btn-default" ng-click="authorizeVK()"><img
+                    src="image/vkontakte.png"/></a>
+            <br/>
+        </div>
+        <div ng-show="noVisibility">
+            <h4>You are successfully enter into your account! Press this button to move to your
+                page:</h4>
+            <br/>
+            <a class="btn btn-info" href="#/personal/{{user.login}}" role="button">My page &raquo;</a>
+            <button class="btn btn-success" ng-click="logout()"><a href="#/">Logout</a></button>
+        </div>
+        <div ng-show="message">
+            <h4>Wrong username or password</h4>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+        <h1 class="text-center">Search User</h1>
+        <div class="list-group">
+            <div class="list-group-item text-center">
+                <form>
+                    <input type="text" class="form-control" placeholder="Search..." ng-model="search">
+                </form>
+            </div>
+        </div>
+        <div>
+            <div class="preview-img text-center">
+                <table class="table table-hover" ng-show="allUsers.length">
+                    <tr>
+                        <th class="text-center">Image</th>
+                        <th class="text-center">Login</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Authorize type</th>
+                    </tr>
+                    <tr ng-repeat="u in allUsers|filter:search">
+                        <td>
+                            <a href="#/personal/{{u.login}}">
+                                <img src="{{u.avatar}}" width="50" height="50">
+                            </a>
+                        </td>
+                        <td>{{ u.login }}</td>
+                        <td>{{ u.name }}</td>
+                        <td>{{ u.type }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

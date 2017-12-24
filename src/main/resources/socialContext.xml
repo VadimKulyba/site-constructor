@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="textEncryptor" class="org.springframework.security.crypto.encrypt.Encryptors"
+          factory-method="noOpText"/>
+
+    <bean id="facebookConnectionFactory" class="org.springframework.social.facebook.connect.FacebookConnectionFactory">
+        <constructor-arg value="378734605913702"/>
+        <constructor-arg value="4a21a6073bdfc002e6e3320053c5830d"/>
+    </bean>
+</beans>
